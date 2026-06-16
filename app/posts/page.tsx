@@ -29,8 +29,17 @@ export const metadata: Metadata = {
   description: "Browse all our blog posts",
 };
 
-export const dynamic = "auto";
 export const revalidate = 3600;
+
+// Pre-generate first 10 paginated pages statically
+// Deeper pages use ISR fallback (dynamically generated on first visit, then cached)
+export async function generateStaticParams() {
+  const params: { page?: string }[] = [{ page: undefined }];
+  for (let i = 2; i <= 10; i++) {
+    params.push({ page: String(i) });
+  }
+  return params;
+}
 
 export default async function Page({
   searchParams,

@@ -121,53 +121,12 @@ next-wp/
 
 ## Deployment
 
-### Railway (Recommended)
-
-Railway deploys the complete stack with one click: MySQL + WordPress + Next.js.
-
-![CleanShot 2025-11-26 at 23 39 02@2x](https://github.com/user-attachments/assets/388427e2-72c4-4caf-8bfd-d86c981b0bb2)
-
-#### What's Included
-
-The Railway template uses a custom WordPress Docker image (`ghcr.io/9d8dev/next-wp-wordpress`) with:
-
-- **next-revalidate plugin** - Pre-installed and auto-activated for cache revalidation
-- **nextjs-headless theme** - Redirects WordPress frontend to your Next.js site
-- **WP-CLI** - Automated WordPress setup
-- **MySQL 8.0** - Database with persistent volume
-- **Next.js** - Your frontend application
-
-```
-┌─────────┐     ┌───────────┐     ┌─────────┐
-│  MySQL  │────▶│ WordPress │◀────│ Next.js │
-│   DB    │     │   (CMS)   │     │(Frontend)│
-└─────────┘     └───────────┘     └─────────┘
-```
-
-#### Deployment
-
-1. Click the **Deploy on Railway** button above
-2. Wait for all 3 services to deploy (MySQL, WordPress, Next.js)
-3. Note the WordPress and Next.js public URLs from the Railway dashboard
-
-#### Post-Deployment Setup
-
-**1. Complete WordPress Installation**
-
-1. Visit your WordPress URL (e.g., `https://wordpress-xxx.up.railway.app`)
-2. Complete the installation wizard:
-   - Site Title
-   - Admin Username
-   - Admin Password
-   - Admin Email
-3. Click "Install WordPress"
-
-**2. Configure the Revalidation Plugin**
+**1. Configure the Revalidation Plugin**
 
 The `next-revalidate` plugin is pre-installed and activated.
 
 1. Go to WordPress Admin → **Settings** → **Next.js Revalidation**
-2. Enter your **Next.js URL** (e.g., `https://next-wp-xxx.up.railway.app`)
+2. Enter your **Next.js URL** (e.g., `https://next-wp-xxx.up.app`)
 3. Enter the **Webhook Secret**:
    - In Railway, go to your Next.js service → Variables
    - Copy the `WORDPRESS_WEBHOOK_SECRET` value

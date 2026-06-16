@@ -15,10 +15,16 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Build arguments for environment variables needed at build time
+# These are validated by next.config.ts — build fails if missing
 ARG WORDPRESS_URL
 ARG WORDPRESS_HOSTNAME
+ARG WORDPRESS_WEBHOOK_SECRET
+ARG ISR_CACHE_TTL
 ENV WORDPRESS_URL=$WORDPRESS_URL
 ENV WORDPRESS_HOSTNAME=$WORDPRESS_HOSTNAME
+ENV WORDPRESS_WEBHOOK_SECRET=$WORDPRESS_WEBHOOK_SECRET
+ENV ISR_CACHE_TTL=$ISR_CACHE_TTL
+ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN pnpm build
@@ -31,11 +37,15 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# Runtime environment variables (also available at runtime, not just build time)
+# Runtime environment variables (available at runtime, not just build time)
 ARG WORDPRESS_URL
 ARG WORDPRESS_HOSTNAME
+ARG WORDPRESS_WEBHOOK_SECRET
+ARG ISR_CACHE_TTL
 ENV WORDPRESS_URL=$WORDPRESS_URL
 ENV WORDPRESS_HOSTNAME=$WORDPRESS_HOSTNAME
+ENV WORDPRESS_WEBHOOK_SECRET=$WORDPRESS_WEBHOOK_SECRET
+ENV ISR_CACHE_TTL=$ISR_CACHE_TTL
 
 # Install sharp for Next.js image optimization
 RUN corepack enable && corepack prepare pnpm@latest --activate && \
