@@ -70,11 +70,11 @@ const ToDelete = () => {
       <div className="grid md:grid-cols-3 gap-4 mt-6">
         <Link
           className="border h-48 bg-accent/50 rounded-lg p-4 flex flex-col justify-between hover:scale-[1.02] transition-all"
-          href="/posts"
+          href="/blog"
         >
           <Pen size={32} />
           <span>
-            Posts{" "}
+            Blog{" "}
             <span className="block text-sm text-muted-foreground">
               All posts from your WordPress
             </span>

@@ -1,11 +1,13 @@
 import { siteConfig } from "@/site.config";
 import type { Metadata } from "next";
 
+export type BasePathType = "blog" | "page" | "pages";
+
 interface ContentMetadataOptions {
   title: string;
   description: string;
   slug: string;
-  basePath: "posts" | "pages";
+  basePath: BasePathType;
 }
 
 export function generateContentMetadata({

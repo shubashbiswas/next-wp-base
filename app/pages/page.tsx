@@ -20,7 +20,7 @@ export default async function Page() {
     <ArchiveList<WPPage>
       title="All Pages"
       items={pages}
-      getItemHref={(p) => `/pages/${p.slug}`}
+      getItemHref={(p) => `/page/${p.slug}`}
       getItemLabel={(p) => p.title.rendered}
       emptyMessage="No pages available yet."
     />

@@ -34,7 +34,7 @@ export async function generateMetadata({
     title: post.title.rendered,
     description: stripHtml(post.excerpt.rendered),
     slug: post.slug,
-    basePath: "posts",
+    basePath: "blog",
   });
 }
 
@@ -60,7 +60,7 @@ export default async function Page({
   });
 
   const siteUrl = siteConfig.site_domain.replace(/\/$/, "");
-  const postUrl = `${siteUrl}/posts/${post.slug}`;
+  const postUrl = `${siteUrl}/blog/${post.slug}`;
 
   return (
     <Section>
@@ -73,7 +73,7 @@ export default async function Page({
       <BreadcrumbListJsonLd
         items={[
           { name: "Home", url: siteUrl },
-          { name: "Posts", url: `${siteUrl}/posts` },
+          { name: "Blog", url: `${siteUrl}/blog` },
           { name: stripHtml(post.title.rendered), url: postUrl },
         ]}
       />
@@ -91,7 +91,7 @@ export default async function Page({
                 <>
                   {" "}by{" "}
                   <span>
-                    <a href={`/posts/?author=${author.id}`}>{author.name}</a>
+                    <a href={`/author/${author.slug}`}>{author.name}</a>
                   </span>
                 </>
               )}
@@ -99,7 +99,7 @@ export default async function Page({
 
             {category && (
               <Link
-                href={`/posts/?category=${category.id}`}
+                href={`/category/${category.slug}`}
                 className={cn(
                   badgeVariants({ variant: "outline" }),
                   "no-underline!"

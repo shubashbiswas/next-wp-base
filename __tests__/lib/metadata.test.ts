@@ -57,7 +57,7 @@ describe("generateContentMetadata", () => {
       title: "Test Post",
       description: "A test description",
       slug: "test-post",
-      basePath: "posts",
+      basePath: "blog",
     });
 
     expect(metadata.title).toBe("Test Post");
@@ -69,12 +69,12 @@ describe("generateContentMetadata", () => {
       title: "Test",
       description: "Desc",
       slug: "my-slug",
-      basePath: "posts",
+      basePath: "blog",
     });
 
     expect(metadata.openGraph).toBeDefined();
     const og = metadata.openGraph as Record<string, unknown>;
-    expect(og.url).toContain("/posts/my-slug");
+    expect(og.url).toContain("/blog/my-slug");
     expect(og.type).toBe("article");
   });
 
@@ -97,7 +97,7 @@ describe("generateContentMetadata", () => {
       title: "Test",
       description: "Desc",
       slug: "slug",
-      basePath: "posts",
+      basePath: "blog",
     });
 
     const twitter = metadata.twitter as Record<string, unknown>;
@@ -110,7 +110,7 @@ describe("generateContentMetadata", () => {
       title: "Hello & World",
       description: "A <test>",
       slug: "slug",
-      basePath: "posts",
+      basePath: "blog",
     });
 
     const og = metadata.openGraph as Record<string, unknown>;

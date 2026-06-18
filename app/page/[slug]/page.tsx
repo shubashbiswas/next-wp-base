@@ -38,7 +38,7 @@ export async function generateMetadata({
     title: page.title.rendered,
     description,
     slug: page.slug,
-    basePath: "pages",
+    basePath: "page",
   });
 }
 
